@@ -99,6 +99,10 @@ for epoch in range(FLAGS.epochs):
     if epoch > FLAGS.early_stopping and cost_val[-1] > np.mean(cost_val[-(FLAGS.early_stopping+1):-1]):
         print("Early stopping...")
         break
+    
+print('Saving model...')
+# tf.saved_model.save(model, "./saved_model/1/")
+tf.train.Saver().save(sess, "saved_model")
 
 print("Optimization Finished!")
 
